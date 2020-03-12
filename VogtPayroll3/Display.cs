@@ -7,8 +7,9 @@ namespace VogtPayroll3
     class Display
     {
 
-        public void PrintMenu()
+        public Employee PrintMenu()
         {
+            Employee emp = default;
             char option;
 
             Console.WriteLine("press 'q' to quit");
@@ -26,7 +27,7 @@ namespace VogtPayroll3
                         System.Environment.Exit(0);
                         break;
                     case 'c':
-                        // CreateAnemployee()
+                        emp = emp.CreateAnEmployee();
                         break;
                     case 'h':
                         // Change an employee()
@@ -42,6 +43,7 @@ namespace VogtPayroll3
                         break;
                 }
             }
+            return emp;
         }
     }
 }

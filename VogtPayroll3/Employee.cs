@@ -68,6 +68,26 @@ namespace VogtPayroll3
             return GetGrossPay() - GetDeductions();
 
         }
+
+        public void DisplayEmployeeInformation(List<Employee> empList)
+        {
+            foreach (var employee in empList)
+            {
+                Console.WriteLine(employee._firstName + " " + employee._lastName);
+                Console.WriteLine(employee._empID);
+                Console.WriteLine(employee.GetGrossPay());
+                Console.WriteLine(employee.GetDeductions());
+                Console.WriteLine(employee.GetNetPay());
+            }
+        }
+
+        public List<Employee> AddEmployeeToList(Employee emp)
+        {
+            List<Employee> empList = new List<Employee>();
+            empList.Add(emp);
+
+            return empList;
+        }
     }
 }
 

@@ -6,9 +6,7 @@ namespace VogtPayroll3
     {
         static void Main(string[] args)
         {
-            Display display = new Display();
 
-            display.PrintMenu();
         }
     }
 }
