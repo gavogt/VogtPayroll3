@@ -70,12 +70,7 @@ namespace VogtPayroll3
         }
 
 
-        public Dictionary<int, Employee> AddEmployeeListToDictionary(List<Employee> empList)
-        {
-           var dictionary = empList.ToDictionary(x => x.EmpID);
 
-            return dictionary;
-        }
     }
 }
 
