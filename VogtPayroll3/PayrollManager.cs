@@ -34,6 +34,25 @@ namespace VogtPayroll3
             }
         }
 
+        public Dictionary<int, Employee> ChangeUserInDictionary(List<Employee> empList, int empID)
+        {
+
+            var dictionary = empList.ToDictionary(x => x.EmpID);
+
+            PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
+            Employee employeeTemp = dictionary[empID];
+
+            employeeTemp.FirstName = payrollConsoleReader.GetFirstNameConsole();
+            employeeTemp.LastName = payrollConsoleReader.GetLastNameConsole();
+            employeeTemp.EmpID = payrollConsoleReader.GetEmployeeIDConsole();
+            employeeTemp.HoursWorked = payrollConsoleReader.GetHoursWorkedConsole();
+            employeeTemp.Payrate = payrollConsoleReader.GetPayrateConsole();
+
+            dictionary.Add(employeeTemp.EmpID, employeeTemp);
+
+            return dictionary;
+        }
+
         public Dictionary<int, Employee> AddEmployeeListToDictionary(List<Employee> empList)
         {
             var dictionary = empList.ToDictionary(x => x.EmpID);
@@ -44,10 +63,10 @@ namespace VogtPayroll3
             {
                 try
                 {
-                    
-                    Console.WriteLine("Key: "+employeeKeyValuePair.Key);
+
+                    Console.WriteLine("Key: " + employeeKeyValuePair.Key);
                     Employee emp = employeeKeyValuePair.Value;
-                    Console.WriteLine("Value: "+emp.FirstName + " " + emp.LastName);
+                    Console.WriteLine("Value: " + emp.FirstName + " " + emp.LastName);
                 }
                 catch (Exception e)
                 {

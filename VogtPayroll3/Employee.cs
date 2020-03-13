@@ -18,6 +18,8 @@ namespace VogtPayroll3
         public string FirstName { get => _firstName; set => _firstName = value; }
         public string LastName { get => _lastName; set => _lastName = value; }
         public int EmpID { get => _empID; set => _empID = value; }
+        public int HoursWorked { get => _hoursWorked; set => _hoursWorked = value; }
+        public decimal Payrate { get => _payrate; set => _payrate = value; }
 
         // CTOR
         public Employee(string firstName, string lastName, int empID, int hoursWorked, decimal payRate)
@@ -25,8 +27,8 @@ namespace VogtPayroll3
             this.FirstName = firstName;
             this.LastName = lastName;
             this.EmpID = empID;
-            this._hoursWorked = hoursWorked;
-            this._payrate = payRate;
+            this.HoursWorked = hoursWorked;
+            this.Payrate = payRate;
 
         }
 
@@ -53,7 +55,7 @@ namespace VogtPayroll3
 
         public decimal GetGrossPay()
         {
-            return _hoursWorked * _payrate;
+            return HoursWorked * Payrate;
 
         }
 
