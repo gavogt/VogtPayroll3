@@ -7,12 +7,15 @@ namespace VogtPayroll3
     class Display
     {
 
-        public List<Employee> PrintMenu()
+        public Dictionary<int, Employee> PrintMenu()
         {
             Employee emp = new Employee("holder", "holder", 1, 1, 1.0m);
             char option;
+            var empID = 0;
             List<Employee> empList = new List<Employee>();
-
+            PayrollManager payrollManager = new PayrollManager();
+            PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
+            Dictionary<int, Employee> dictionary = new Dictionary<int, Employee>();
 
             Console.WriteLine("c. Create a new employee");
             Console.WriteLine("h. Change an employee");
@@ -29,29 +32,36 @@ namespace VogtPayroll3
                         System.Environment.Exit(0);
                         break;
                     case 'c':
-                        empList.Add(emp.CreateAnEmployee());
+                        Console.WriteLine("");
+
+                        emp = emp.CreateAnEmployee();
+                        dictionary = payrollManager.AddEmployeeToDictionary(emp);
                         break;
                     case 'h':
-                        // Change an employee()
+                        empID = payrollConsoleReader.GetEmployeeIDConsole();
+                        dictionary = payrollManager.ChangeUserInDictionary(empList, empID);
                         break;
                     case 'u':
-                        // Update an employee()
+                        empID = payrollConsoleReader.GetEmployeeIDConsole();
+                        dictionary = payrollManager.UpdateUserInDictionary(empList, empID);
                         break;
                     case 'd':
-                        // DeleteRecords()
+
+                        empID = payrollConsoleReader.GetEmployeeIDConsole();
+                        dictionary = payrollManager.RemoveUserInDictionary(empList, empID);
                         break;
                     default:
                         Console.WriteLine(" ");
                         Console.WriteLine("please press 'q', 'c', 'h', 'u', 'd'");
                         break;
                 }
-                
+
 
                 option = Console.ReadKey().KeyChar;
                 Console.WriteLine("");
-                
+
             }
-            return empList;
+            return dictionary;
         }
     }
 }

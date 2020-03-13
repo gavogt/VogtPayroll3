@@ -41,6 +41,7 @@ namespace VogtPayroll3
             int hoursWorked;
             decimal payrate;
 
+
             PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
 
             firstName = payrollConsoleReader.GetFirstNameConsole();
