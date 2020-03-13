@@ -48,7 +48,7 @@ namespace VogtPayroll3
                     case 'd':
 
                         empID = payrollConsoleReader.GetEmployeeIDConsole();
-                        dictionary = payrollManager.RemoveUserInDictionary(empList, empID);
+                        dictionary = payrollManager.RemoveUserInDictionary(dictionary, empID);
                         break;
                     default:
                         Console.WriteLine(" ");

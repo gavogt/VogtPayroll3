@@ -35,9 +35,9 @@ namespace VogtPayroll3
             }
         }
 
-        public Dictionary<int, Employee> RemoveUserInDictionary(List<Employee> empList, int empID)
+        public Dictionary<int, Employee> RemoveUserInDictionary(Dictionary<int, Employee> dictionary, int empID)
         {
-            var dictionary = empList.ToDictionary(x => x.EmpID);
+            //var dictionary = empList.ToDictionary(x => x.EmpID);
 
             Employee employeeTemp = dictionary[empID];
 
