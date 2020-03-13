@@ -14,12 +14,16 @@ namespace VogtPayroll3
         private decimal _payrate;
         private const decimal taxAmount = .30m;
 
+        public string FirstName { get => _firstName; set => _firstName = value; }
+        public string LastName { get => _lastName; set => _lastName = value; }
+        public int EmpID { get => _empID; set => _empID = value; }
+
         // CTOR
         public Employee(string firstName, string lastName, int empID, int hoursWorked, decimal payRate)
         {
-            this._firstName = firstName;
-            this._lastName = lastName;
-            this._empID = empID;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.EmpID = empID;
             this._hoursWorked = hoursWorked;
             this._payrate = payRate;
 
@@ -36,15 +40,10 @@ namespace VogtPayroll3
 
             PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
 
-            Console.WriteLine("What is the first name of the employee?");
             firstName = payrollConsoleReader.GetFirstNameConsole();
-            Console.WriteLine("What is the last name of the employee?");
             lastName = payrollConsoleReader.GetLastNameConsole();
-            Console.WriteLine("What is the employee id?");
             empID = payrollConsoleReader.GetEmployeeIDConsole();
-            Console.WriteLine("How many hours were worked?");
             hoursWorked = payrollConsoleReader.GetHoursWorkedConsole();
-            Console.WriteLine("What is the payrate of the employee");
             payrate = payrollConsoleReader.GetPayrateConsole();
 
             return new Employee(firstName, lastName, empID, hoursWorked, payrate);
@@ -69,17 +68,7 @@ namespace VogtPayroll3
 
         }
 
-        public void DisplayEmployeeInformation(List<Employee> empList)
-        {
-            foreach (var employee in empList)
-            {
-                Console.WriteLine(employee._firstName + " " + employee._lastName);
-                Console.WriteLine(employee._empID);
-                Console.WriteLine(employee.GetGrossPay());
-                Console.WriteLine(employee.GetDeductions());
-                Console.WriteLine(employee.GetNetPay());
-            }
-        }
+
 
         public List<Employee> AddEmployeeToList(Employee emp)
         {

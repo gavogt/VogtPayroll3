@@ -9,7 +9,7 @@ namespace VogtPayroll3
 
         public string GetFirstNameConsole()
         {
-            Console.WriteLine("What is the first name of the employee?");
+            Console.WriteLine("\nWhat is the first name of the employee?");
 
             var firstName = Console.ReadLine();
 
@@ -57,7 +57,7 @@ namespace VogtPayroll3
         {
 
             int empIDout;
-            Console.WriteLine("How many hours were worked?");
+            Console.WriteLine("What is the employee ID?");
             var empID = Console.ReadLine();
             while (!int.TryParse(empID, out empIDout))
             {

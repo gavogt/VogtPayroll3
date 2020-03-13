@@ -7,16 +7,18 @@ namespace VogtPayroll3
     class Display
     {
 
-        public Employee PrintMenu()
+        public List<Employee> PrintMenu()
         {
-            Employee emp = default;
+            Employee emp = new Employee("holder", "holder", 1, 1, 1.0m);
             char option;
+            List<Employee> empList = new List<Employee>();
 
-            Console.WriteLine("press 'q' to quit");
+
             Console.WriteLine("c. Create a new employee");
             Console.WriteLine("h. Change an employee");
             Console.WriteLine("u. Update an employee");
             Console.WriteLine("d. Delete records");
+            Console.WriteLine("q. quit the program");
             option = Console.ReadKey().KeyChar;
 
             while (option != 'q')
@@ -28,6 +30,7 @@ namespace VogtPayroll3
                         break;
                     case 'c':
                         emp = emp.CreateAnEmployee();
+                        empList = emp.AddEmployeeToList(emp);
                         break;
                     case 'h':
                         // Change an employee()
@@ -42,8 +45,13 @@ namespace VogtPayroll3
                         Console.WriteLine("please press 'q', 'c', 'h', 'u', 'd'");
                         break;
                 }
+                
+
+                option = Console.ReadKey().KeyChar;
+                Console.WriteLine("");
+                
             }
-            return emp;
+            return empList;
         }
     }
 }

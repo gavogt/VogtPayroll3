@@ -12,9 +12,23 @@ namespace VogtPayroll3
             Display display = new Display();
             List<Employee> empList = new List<Employee>();
 
-            emp = display.PrintMenu();
-            emp.AddEmployeeToList(emp);
+            empList = display.PrintMenu();
+            DisplayEmployeeInformation(empList);
 
+
+
+        }
+
+        public void DisplayEmployeeInformation(List<Employee> empList)
+        {
+            foreach (var employee in empList)
+            {
+                Console.WriteLine("Name: " + employee.FirstName + " " + employee.LastName);
+                Console.WriteLine("Employee ID: " + employee.EmpID);
+                Console.WriteLine("Gross Pay: " + employee.GetGrossPay());
+                Console.WriteLine("Deductions: " + employee.GetDeductions());
+                Console.WriteLine("Net Pay: " + employee.GetNetPay());
+            }
         }
     }
 }
