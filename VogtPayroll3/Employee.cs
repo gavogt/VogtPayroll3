@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace VogtPayroll3
 {
@@ -69,13 +70,11 @@ namespace VogtPayroll3
         }
 
 
-
-        public List<Employee> AddEmployeeToList(Employee emp)
+        public Dictionary<int, Employee> AddEmployeeListToDictionary(List<Employee> empList)
         {
-            List<Employee> empList = new List<Employee>();
-            empList.Add(emp);
+           var dictionary = empList.ToDictionary(x => x.EmpID);
 
-            return empList;
+            return dictionary;
         }
     }
 }

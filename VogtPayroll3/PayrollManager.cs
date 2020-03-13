@@ -23,6 +23,7 @@ namespace VogtPayroll3
         {
             foreach (var employee in empList)
             {
+                Console.WriteLine(" ");
                 Console.WriteLine("Name: " + employee.FirstName + " " + employee.LastName);
                 Console.WriteLine("Employee ID: " + employee.EmpID);
                 Console.WriteLine("Gross Pay: " + employee.GetGrossPay());

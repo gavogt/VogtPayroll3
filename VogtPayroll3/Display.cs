@@ -29,8 +29,7 @@ namespace VogtPayroll3
                         System.Environment.Exit(0);
                         break;
                     case 'c':
-                        emp = emp.CreateAnEmployee();
-                        empList = emp.AddEmployeeToList(emp);
+                        empList.Add(emp.CreateAnEmployee());
                         break;
                     case 'h':
                         // Change an employee()
@@ -42,6 +41,7 @@ namespace VogtPayroll3
                         // DeleteRecords()
                         break;
                     default:
+                        Console.WriteLine(" ");
                         Console.WriteLine("please press 'q', 'c', 'h', 'u', 'd'");
                         break;
                 }
