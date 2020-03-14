@@ -33,15 +33,17 @@ namespace VogtPayroll3
                         break;
                     case 'c':
                         Console.WriteLine("");
-
-                        Employee emp = payrollConsoleReader.CreateAnEmployee();
-                        dictionary = payrollManager.AddEmployeeToDictionary(emp);
+                        empID = payrollConsoleReader.GetEmployeeIDConsole();
+                        Employee emp = payrollConsoleReader.CreateAnEmployee(empID);
+                        dictionary.Add(empID, emp);
                         break;
                     case 'h':
-                        dictionary = payrollManager.ChangeUserInDictionary(dictionary);
+                        empID = payrollConsoleReader.GetEmployeeIDConsole();
+                        dictionary = payrollManager.ChangeUserInDictionary(dictionary, empID);
                         break;
                     case 'u':
-                        dictionary = payrollManager.UpdateUserInDictionary(dictionary);
+                        empID = payrollConsoleReader.GetEmployeeIDConsole();
+                        dictionary = payrollManager.UpdateUserInDictionary(dictionary, empID);
                         break;
                     case 'd':
                         empID = payrollConsoleReader.GetEmployeeIDConsole();

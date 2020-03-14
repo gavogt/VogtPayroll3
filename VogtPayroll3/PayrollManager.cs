@@ -61,23 +61,21 @@ namespace VogtPayroll3
             return dictionary;
 
         }
-        public Dictionary<int, Employee> UpdateUserInDictionary(Dictionary<int, Employee> dictionary)
+        public Dictionary<int, Employee> UpdateUserInDictionary(Dictionary<int, Employee> dictionary, int empID)
         {
             PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
 
-            foreach (KeyValuePair<int, Employee> employeeKeyValuePair in dictionary.ToArray())
-            {
                 try
                 {
 
-                    if (dictionary.ContainsKey(employeeKeyValuePair.Key))
+                    if (dictionary.ContainsKey(empID))
                     {
-                        dictionary.Remove(employeeKeyValuePair.Key, out Employee emp);
+                        dictionary.Remove(empID, out Employee emp);
                         emp.HoursWorked = payrollConsoleReader.GetHoursWorkedConsole();
                         emp.Payrate = payrollConsoleReader.GetPayrateConsole();
-                        Console.WriteLine("Key: " + employeeKeyValuePair.Key);
+                        Console.WriteLine("Key: " + emp.EmpID);
                         Console.WriteLine("Value: " + emp.FirstName + " " + emp.LastName);
-                        dictionary.Add(employeeKeyValuePair.Key, emp);
+                        dictionary.Add(empID, emp);
                     }
                     else
                     {
@@ -89,32 +87,28 @@ namespace VogtPayroll3
                     Console.WriteLine($"Error {e}");
 
                 }
-            }
 
             return dictionary;
         }
 
-        public Dictionary<int, Employee> ChangeUserInDictionary(Dictionary<int, Employee> dictionary)
+        public Dictionary<int, Employee> ChangeUserInDictionary(Dictionary<int, Employee> dictionary, int empID)
         {
 
             PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
 
-
-            foreach (KeyValuePair<int, Employee> employeeKeyValuePair in dictionary.ToArray())
-            {
                 try
                 {
 
-                    if (dictionary.ContainsKey(employeeKeyValuePair.Key))
+                    if (dictionary.ContainsKey(empID))
                     {
-                        dictionary.Remove(employeeKeyValuePair.Key, out Employee emp);
+                        dictionary.Remove(empID, out Employee emp);
                         emp.FirstName = payrollConsoleReader.GetFirstNameConsole();
                         emp.LastName = payrollConsoleReader.GetLastNameConsole();
                         emp.HoursWorked = payrollConsoleReader.GetHoursWorkedConsole();
                         emp.Payrate = payrollConsoleReader.GetPayrateConsole();
-                        Console.WriteLine("Key: " + employeeKeyValuePair.Key);
+                        Console.WriteLine("Key: " + empID);
                         Console.WriteLine("Value: " + emp.FirstName + " " + emp.LastName);
-                        dictionary.Add(employeeKeyValuePair.Key, emp);
+                        dictionary.Add(empID, emp);
                     }
                     else
                     {
@@ -126,7 +120,7 @@ namespace VogtPayroll3
                     Console.WriteLine($"Error {e}");
 
                 }
-            }
+            
 
             return dictionary;
         }
