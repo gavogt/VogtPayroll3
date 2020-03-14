@@ -7,6 +7,13 @@ namespace VogtPayroll3
 {
     class PayrollManager
     {
+        private PayrollConsoleReader payrollConsoleReader;
+
+        public PayrollManager()
+        {
+            payrollConsoleReader = new PayrollConsoleReader();
+        }
+
         public void Run()
         {
             Display display = new Display();
@@ -37,7 +44,6 @@ namespace VogtPayroll3
 
         public Dictionary<int, Employee> RemoveUserInDictionary(Dictionary<int, Employee> dictionary, int empID)
         {
-            //var dictionary = empList.ToDictionary(x => x.EmpID);
 
             Employee employeeTemp = dictionary[empID];
 
@@ -49,7 +55,7 @@ namespace VogtPayroll3
             }
             else
             {
-                Console.WriteLine($"Key = {empID} is not found.");
+                Console.WriteLine($"Key = {empID} has been removed!");
             }
 
             return dictionary;
@@ -70,21 +76,39 @@ namespace VogtPayroll3
             return dictionary;
         }
 
-        public Dictionary<int, Employee> ChangeUserInDictionary(List<Employee> empList, int empID)
+        public Dictionary<int, Employee> ChangeUserInDictionary(Dictionary<int, Employee> dictionary)
         {
 
-            var dictionary = empList.ToDictionary(x => x.EmpID);
-
             PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
-            Employee employeeTemp = dictionary[empID];
 
-            employeeTemp.FirstName = payrollConsoleReader.GetFirstNameConsole();
-            employeeTemp.LastName = payrollConsoleReader.GetLastNameConsole();
-            //employeeTemp.EmpID = payrollConsoleReader.GetEmployeeIDConsole();
-            employeeTemp.HoursWorked = payrollConsoleReader.GetHoursWorkedConsole();
-            employeeTemp.Payrate = payrollConsoleReader.GetPayrateConsole();
 
-            dictionary.Add(employeeTemp.EmpID, employeeTemp);
+            foreach (KeyValuePair<int, Employee> employeeKeyValuePair in dictionary.ToArray())
+            {
+                try
+                {
+
+                    if (dictionary.ContainsKey(employeeKeyValuePair.Key))
+                    {
+                        dictionary.Remove(employeeKeyValuePair.Key, out Employee emp);
+                        emp.FirstName = payrollConsoleReader.GetFirstNameConsole();
+                        emp.LastName = payrollConsoleReader.GetLastNameConsole();
+                        emp.HoursWorked = payrollConsoleReader.GetHoursWorkedConsole();
+                        emp.Payrate = payrollConsoleReader.GetPayrateConsole();
+                        Console.WriteLine("Key: " + employeeKeyValuePair.Key);
+                        Console.WriteLine("Value: " + emp.FirstName + " " + emp.LastName);
+                        dictionary.Add(employeeKeyValuePair.Key, emp);
+                    }
+                    else
+                    {
+                        Console.WriteLine("error!");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Error {e}");
+
+                }
+            }
 
             return dictionary;
         }
@@ -92,7 +116,7 @@ namespace VogtPayroll3
         public Dictionary<int, Employee> DisplayEmployeeInformationDictionary(Dictionary<int, Employee> dictionary)
         {
 
-            
+
             Console.WriteLine("\nKeys and Values: ");
 
             foreach (KeyValuePair<int, Employee> employeeKeyValuePair in dictionary)
@@ -106,8 +130,7 @@ namespace VogtPayroll3
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Error!");
-                    e.ToString();
+                    Console.WriteLine($"Error {e}");
 
                 }
             }
@@ -119,8 +142,6 @@ namespace VogtPayroll3
         public Dictionary<int, Employee> AddEmployeeToDictionary(Employee emp)
         {
             var dictionary = new Dictionary<int, Employee>();
-
-            PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
 
             dictionary.Add(emp.EmpID, emp);
 

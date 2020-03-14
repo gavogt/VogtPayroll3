@@ -24,33 +24,11 @@ namespace VogtPayroll3
         // CTOR
         public Employee(string firstName, string lastName, int empID, int hoursWorked, decimal payRate)
         {
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.EmpID = empID;
-            this.HoursWorked = hoursWorked;
-            this.Payrate = payRate;
-
-        }
-
-        public Employee CreateAnEmployee()
-        {
-
-            string firstName;
-            string lastName;
-            int empID;
-            int hoursWorked;
-            decimal payrate;
-
-
-            PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
-
-            firstName = payrollConsoleReader.GetFirstNameConsole();
-            lastName = payrollConsoleReader.GetLastNameConsole();
-            empID = payrollConsoleReader.GetEmployeeIDConsole();
-            hoursWorked = payrollConsoleReader.GetHoursWorkedConsole();
-            payrate = payrollConsoleReader.GetPayrateConsole();
-
-            return new Employee(firstName, lastName, empID, hoursWorked, payrate);
+            FirstName = firstName;
+            LastName = lastName;
+            EmpID = empID;
+            HoursWorked = hoursWorked;
+            Payrate = payRate;
 
         }
 

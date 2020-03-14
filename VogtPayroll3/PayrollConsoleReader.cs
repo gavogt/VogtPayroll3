@@ -6,6 +6,27 @@ namespace VogtPayroll3
 {
     class PayrollConsoleReader
     {
+        public Employee CreateAnEmployee()
+        {
+
+            string firstName;
+            string lastName;
+            int empID;
+            int hoursWorked;
+            decimal payrate;
+
+
+            PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
+
+            firstName = payrollConsoleReader.GetFirstNameConsole();
+            lastName = payrollConsoleReader.GetLastNameConsole();
+            empID = payrollConsoleReader.GetEmployeeIDConsole();
+            hoursWorked = payrollConsoleReader.GetHoursWorkedConsole();
+            payrate = payrollConsoleReader.GetPayrateConsole();
+
+            return new Employee(firstName, lastName, empID, hoursWorked, payrate);
+
+        }
 
         public string GetFirstNameConsole()
         {

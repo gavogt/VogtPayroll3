@@ -9,7 +9,7 @@ namespace VogtPayroll3
 
         public Dictionary<int, Employee> PrintMenu()
         {
-            Employee emp = new Employee("holder", "holder", 1, 1, 1.0m);
+
             char option;
             var empID = 0;
             List<Employee> empList = new List<Employee>();
@@ -34,12 +34,11 @@ namespace VogtPayroll3
                     case 'c':
                         Console.WriteLine("");
 
-                        emp = emp.CreateAnEmployee();
+                        Employee emp = payrollConsoleReader.CreateAnEmployee();
                         dictionary = payrollManager.AddEmployeeToDictionary(emp);
                         break;
                     case 'h':
-                        empID = payrollConsoleReader.GetEmployeeIDConsole();
-                        dictionary = payrollManager.ChangeUserInDictionary(empList, empID);
+                        dictionary = payrollManager.ChangeUserInDictionary(dictionary);
                         break;
                     case 'u':
                         empID = payrollConsoleReader.GetEmployeeIDConsole();
