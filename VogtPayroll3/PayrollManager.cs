@@ -61,17 +61,35 @@ namespace VogtPayroll3
             return dictionary;
 
         }
-        public Dictionary<int, Employee> UpdateUserInDictionary(List<Employee> empList, int empID)
+        public Dictionary<int, Employee> UpdateUserInDictionary(Dictionary<int, Employee> dictionary)
         {
-            var dictionary = empList.ToDictionary(x => x.EmpID);
-
             PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
-            Employee employeeTemp = dictionary[empID];
 
-            employeeTemp.HoursWorked = payrollConsoleReader.GetHoursWorkedConsole();
-            employeeTemp.Payrate = payrollConsoleReader.GetPayrateConsole();
+            foreach (KeyValuePair<int, Employee> employeeKeyValuePair in dictionary.ToArray())
+            {
+                try
+                {
 
-            dictionary.Add(employeeTemp.EmpID, employeeTemp);
+                    if (dictionary.ContainsKey(employeeKeyValuePair.Key))
+                    {
+                        dictionary.Remove(employeeKeyValuePair.Key, out Employee emp);
+                        emp.HoursWorked = payrollConsoleReader.GetHoursWorkedConsole();
+                        emp.Payrate = payrollConsoleReader.GetPayrateConsole();
+                        Console.WriteLine("Key: " + employeeKeyValuePair.Key);
+                        Console.WriteLine("Value: " + emp.FirstName + " " + emp.LastName);
+                        dictionary.Add(employeeKeyValuePair.Key, emp);
+                    }
+                    else
+                    {
+                        Console.WriteLine("error!");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Error {e}");
+
+                }
+            }
 
             return dictionary;
         }
@@ -125,7 +143,9 @@ namespace VogtPayroll3
                 {
                     Console.WriteLine("Key: " + employeeKeyValuePair.Key);
                     Employee emp = employeeKeyValuePair.Value;
-                    Console.WriteLine("Value: " + emp.FirstName + " " + emp.LastName);
+                    Console.WriteLine("Name: " + emp.FirstName + " " + emp.LastName);
+                    Console.WriteLine("Hours worked: " + emp.HoursWorked);
+                    Console.WriteLine("Payrate: " + emp.Payrate);
 
                 }
                 catch (Exception e)

@@ -41,11 +41,9 @@ namespace VogtPayroll3
                         dictionary = payrollManager.ChangeUserInDictionary(dictionary);
                         break;
                     case 'u':
-                        empID = payrollConsoleReader.GetEmployeeIDConsole();
-                        dictionary = payrollManager.UpdateUserInDictionary(empList, empID);
+                        dictionary = payrollManager.UpdateUserInDictionary(dictionary);
                         break;
                     case 'd':
-
                         empID = payrollConsoleReader.GetEmployeeIDConsole();
                         dictionary = payrollManager.RemoveUserInDictionary(dictionary, empID);
                         break;
@@ -53,8 +51,8 @@ namespace VogtPayroll3
                         Console.WriteLine(" ");
                         Console.WriteLine("please press 'q', 'c', 'h', 'u', 'd'");
                         break;
-                }
 
+                }
 
                 option = Console.ReadKey().KeyChar;
                 Console.WriteLine("");
