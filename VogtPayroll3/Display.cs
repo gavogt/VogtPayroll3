@@ -6,7 +6,11 @@ namespace VogtPayroll3
 {
     class Display
     {
-
+        #region PrintMenu
+        /// <summary>
+        /// Prints the menu for employee options
+        /// </summary>
+        /// <returns>A dictionary</returns>
         public Dictionary<int, Employee> PrintMenu()
         {
 
@@ -60,7 +64,10 @@ namespace VogtPayroll3
                 Console.WriteLine("");
 
             }
+
             return dictionary;
+
         }
+        #endregion
     }
 }

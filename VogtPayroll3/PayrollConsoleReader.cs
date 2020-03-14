@@ -6,6 +6,12 @@ namespace VogtPayroll3
 {
     class PayrollConsoleReader
     {
+        #region CreateAnEmployee
+        /// <summary>
+        /// Creates an employee
+        /// </summary>
+        /// <param name="empID">The employee ID desired</param>
+        /// <returns>An employee object</returns>
         public Employee CreateAnEmployee(int empID)
         {
 
@@ -25,7 +31,13 @@ namespace VogtPayroll3
             return new Employee(firstName, lastName, empID, hoursWorked, payrate);
 
         }
+        #endregion
 
+        #region GetFirstNameConsole
+        /// <summary>
+        /// Returns the first name of an employee
+        /// </summary>
+        /// <returns>First name</returns>
         public string GetFirstNameConsole()
         {
             Console.WriteLine("\nWhat is the first name of the employee?");
@@ -39,8 +51,15 @@ namespace VogtPayroll3
             }
 
             return firstName;
-        }
 
+        }
+        #endregion
+
+        #region GetLastNameConsole
+        /// <summary>
+        /// Returns last name of an employee
+        /// </summary>
+        /// <returns>last name</returns>
         public string GetLastNameConsole()
         {
             Console.WriteLine("What is the last name of the employee?");
@@ -54,8 +73,15 @@ namespace VogtPayroll3
             }
 
             return lastName;
-        }
 
+        }
+        #endregion
+
+        #region GetHoursWorkedConsole
+        /// <summary>
+        /// Returns hours worked of an employee
+        /// </summary>
+        /// <returns>Hours worked</returns>
         public int GetHoursWorkedConsole()
         {
 
@@ -71,7 +97,13 @@ namespace VogtPayroll3
             return hoursResult;
 
         }
+        #endregion
 
+        #region GetEmployeeIDConsole
+        /// <summary>
+        /// Returns employee ID
+        /// </summary>
+        /// <returns>Employee ID</returns>
         public int GetEmployeeIDConsole()
         {
 
@@ -87,7 +119,13 @@ namespace VogtPayroll3
             return empIDout;
 
         }
+        #endregion
 
+        #region GetPayrateConsole
+        /// <summary>
+        /// Returns payrate of the employee
+        /// </summary>
+        /// <returns>Payrate</returns>
         public decimal GetPayrateConsole()
         {
             decimal payrateResult;
@@ -102,6 +140,7 @@ namespace VogtPayroll3
             return payrateResult;
 
         }
+        #endregion
     }
 
 }

@@ -32,25 +32,41 @@ namespace VogtPayroll3
 
         }
 
+        #region GetGrossPay
+        /// <summary>
+        /// Returns gross pay of an Employee
+        /// </summary>
+        /// <returns>Gross pay</returns>
         public decimal GetGrossPay()
         {
             return HoursWorked * Payrate;
 
         }
+        #endregion
 
+        #region GetDeductions
+        /// <summary>
+        /// Returns the deductions of an employee
+        /// </summary>
+        /// <returns>Deductions</returns>
         public decimal GetDeductions()
         {
             return GetGrossPay() * taxAmount;
 
         }
+        #endregion
 
+        #region GetNetPay
+        /// <summary>
+        /// Returns the netpay of an employee
+        /// </summary>
+        /// <returns>Netpay</returns>
         public decimal GetNetPay()
         {
             return GetGrossPay() - GetDeductions();
 
         }
-
-
+        #endregion
 
     }
 }
